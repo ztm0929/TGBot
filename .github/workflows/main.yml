@@ -8,6 +8,8 @@ jobs:
   build:
 
     runs-on: windows-latest  # 或 ubuntu-latest
+    env:
+      API_TOKEN: ${{ secrets.API_TOKEN }}
 
     steps:
     - uses: actions/checkout@v2
