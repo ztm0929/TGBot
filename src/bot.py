@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import Application, CommandHandler, CallbackContext
+from telegram.ext import Application, CommandHandler, MessageHandler, filters,  CallbackContext
 import os
 from dotenv import load_dotenv
 import logging
@@ -38,11 +38,26 @@ async def github_command(update: Update, context: CallbackContext) -> None:
         "https://github.com/ztm0929/TGBot"
     )
 
+async def handle_any(update: Update, context: CallbackContext) -> None:
+    if update.message.text:
+        text = update.message.text
+        if text.startswith('/'):
+            await update.message.reply_text('抱歉，我暂时无法理解其他命令，敬请期待~')
+        else:
+            await update.message.reply_text('抱歉，我暂时无法理解其他命令，敬请期待~')
+    elif update.message.photo:
+        await update.message.reply_text('抱歉，我不能处理图片。')
+    elif update.message.entities and 'url' in [entity.type for entity in update.message.entities]:
+        await update.message.reply_text('抱歉，我不能处理链接。')
+    else:
+        await update.message.reply_text('抱歉，我暂时无法理解这种类型的消息。')
+
 if __name__ == '__main__':
     application = Application.builder().token(API_TOKEN).build()
 
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('help', help_command))
     application.add_handler(CommandHandler('github', github_command))
-
+    application.add_handler(MessageHandler(filters.TEXT | filters.PHOTO, handle_any))
+    
     application.run_polling()
