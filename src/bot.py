@@ -38,7 +38,7 @@ async def github_command(update: Update, context: CallbackContext) -> None:
         "https://github.com/ztm0929/TGBot"
     )
 
-def initialize_bot():
+if __name__ == '__main__':
     application = Application.builder().token(API_TOKEN).build()
 
     application.add_handler(CommandHandler('start', start))
