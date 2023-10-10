@@ -31,5 +31,17 @@
 
 如果你有好的意见或建议，欢迎提出。
 
+## 参考链接
+
+以下是本项目中使用的一些库和工具的官方文档和其他有用的资源：
+
+- **Python**: [官方文档](https://www.python.org/doc/)
+- **python-telegram-bot**: [API 文档](https://docs.python-telegram-bot.org/en/latest/)
+- **APScheduler**: [用户指南](https://apscheduler.readthedocs.io/en/latest/)
+- **和风天气 API**: [开发文档](https://dev.qweather.com/docs/)
+
+<br>
+<br>
+
 *本项目由 **GPT-4** 提供支持。*  
 *This project is powered by **GPT-4**.*
